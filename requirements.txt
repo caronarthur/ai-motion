@@ -8,6 +8,8 @@ wheel>=0.29
 numpy
 pandas
 scikit-learn
+seaborn
+
 
 # tests/linter
 black
@@ -27,3 +29,9 @@ six>=1.14
 joblib
 memoized-property
 termcolor
+
+#New packages for utils.py and data.py
+
+librosa==0.8.1
+
+
