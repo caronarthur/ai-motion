@@ -7,4 +7,5 @@ raw_data/
 **/__pycache__/
 .env
 /data/
+speech_emotion_reco/data/
 /speech_emotion_reco/data/
