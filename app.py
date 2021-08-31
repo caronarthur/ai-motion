@@ -3,8 +3,8 @@ import librosa
 import glob
 import os
 from pydub import AudioSegment
-from ffprobe import FFProbe
 from helper import draw_embed, create_spectrogram, read_audio, record, save_record
+from pydub import AudioSegment
 
 dir = 'samples/'
 for f in os.listdir(dir):
@@ -36,8 +36,14 @@ if st.button(f"Click to Record"):
         fig = create_spectrogram(path_myrecording)
         st.pyplot(fig)
         
-        # convert wav to mp3                                                            
-        sound = AudioSegment.from_mp3(path_myrecording)
-        sound.export("/samples/file.wav", format="wav")
+        import subprocess
+  
+        # convert mp3 to wav file
+        subprocess.call(['ffmpeg', '-i', path_myrecording,
+                 'converted_to_wav_file.wav'])
         
-        
+        dst = "test.wav"
+
+        #   convert wav to mp3                                                            
+        sound = AudioSegment.from_file(path_myrecording)
+        sound.export(dst, format="wav")
