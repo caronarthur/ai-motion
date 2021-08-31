@@ -4,12 +4,11 @@ import os
 import seaborn as sns
 import librosa
 import librosa.display
+from google.cloud import storage
 
-#get the data from a sound 
 def get_data(file):
     data, sampling_rate = librosa.load(file)
     return data
-
 
 # Create functions to import each dataset
 def create_data_savee():
@@ -71,7 +70,7 @@ def create_data_ravdess():
 
 def create_data_tess():
     tess= "data/tess/"
-    list_files_tess= os.listdir(tess)
+    list_files_tess= os.listdir(tess).remove('.DS_Store')
     emotion_tess=[]
     path_tess=[]
 
@@ -138,11 +137,14 @@ def create_data_crema():
 
 def merge_data():
     emotion_df = pd.concat([create_data_savee(), create_data_ravdess()])
-    emotion_df= pd.concat([emotion_df,create_data_tess()])
-    emotion_df= pd.concat([emotion_df,create_data_crema()])
+    emotion_df = pd.concat([emotion_df,create_data_tess()])
+    emotion_df = pd.concat([emotion_df,create_data_crema()])
     return emotion_df
 
-
-
-if __name__ == '__main__':
-    emo = merge_data()
+def get_data_from_gcp(optimize=False, **kwargs):
+    """method to get the training data (or a portion of it) from google cloud bucket"""
+    # Add Client() here
+    client = storage.Client()
+    path = f"gs://{BUCKET_NAME}/{BUCKET_TRAIN_DATA_PATH}"
+    df = pd.read_csv(path)
+    return df
