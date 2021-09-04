@@ -22,5 +22,6 @@ def get_array(audio_file):
     image = Image.open(buf).convert('RGB') 
     resized_image = image.resize((256,256))
     X_sample = np.array(resized_image)
+    X_sample = np.expand_dims(X_sample, axis = 0)
     return X_sample 
     
