@@ -1,7 +1,7 @@
 from tensorflow.keras.models import load_model
 import joblib
-from raph_data.py import get_array
-from mateo_preprocess.py import sound_to_number
+from speech_emotion_reco.raph_data import get_array
+from speech_emotion_reco.mateo_preprocess import sound_to_number
 import pandas as pd
 
 def combine_predict(sound):

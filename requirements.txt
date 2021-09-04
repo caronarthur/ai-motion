@@ -41,3 +41,5 @@ wavio
 subprocess
 ffmpeg
 glob
+
+python-multipart
