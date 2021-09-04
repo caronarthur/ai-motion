@@ -7,6 +7,8 @@ from speech_emotion_reco.raph_data import get_array
 from fastapi import FastAPI, File, UploadFile
 from speech_emotion_reco.combine_models import combine_predict
 import librosa 
+import shutil 
+import io
 
 def convert_mp3(path_myrecording):
     # convert mp3 to wav file
@@ -24,10 +26,15 @@ def convert_mp3(path_myrecording):
 app = FastAPI()
 
 @app.post("/upload/")
-def create_upload_file(file: UploadFile = File(...)):
-    a,b = convert_mp3(file.file)
+async def create_upload_file(file: UploadFile = File(...)):
+    buf= io.BytesIO()
+    with open ("sound.mp3","wb") as buffer:
+        shutil.copyfileobj(file.file, buffer)
+    
+    a,b = convert_mp3("sound.mp3")
     
     prediction = combine_predict(a,b)
     return prediction
+   
 
     
