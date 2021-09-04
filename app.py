@@ -46,7 +46,7 @@ if st.button(f"Click to Record"):
     
     #sound_array = get_array("samples/converted_to_wav_file.wav")
     
-    api_file_upload_url = 'http://upload.clyp.it/upload'
+    api_file_upload_url = 'http://127.0.0.1:8000/'
     send_files = {'audioFile': ('music.mp3', path_myrecording, 'audio/mpeg')}
     r = requests.post(api_file_upload_url, files=send_files)
     
