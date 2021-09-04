@@ -8,8 +8,8 @@ def combine_predict(sound):
     X_1= sound_to_number(sound)
     X_2=get_array(sound)
 
-    model_1= joblib.load("mlp.joblib")
-    model_2= load_model("cnn")
+    model_1= joblib.load("../models/mlp_model.joblib")
+    model_2= load_model("../models/CNN_model.hdf5")
     proba1= pd.DataFrame(model_1.predict_proba(X_1))
     proba2= pd.DataFrame(model_2.predict(X_2))
 
