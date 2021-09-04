@@ -8,9 +8,7 @@ from pydub import AudioSegment
 import subprocess
 from speech_emotion_reco.mateo_preprocess import sound_to_number
 from speech_emotion_reco.raph_data import get_array
-
-#theme
-base="light"
+import requests
 
 dir = 'samples/'
 for f in os.listdir(dir):
@@ -41,12 +39,17 @@ if st.button(f"Click to Record"):
     st.pyplot(fig)
   
     # convert mp3 to wav file
-    subprocess.call(['ffmpeg', '-i', path_myrecording,
-             'samples/converted_to_wav_file.wav'])
+    #subprocess.call(['ffmpeg', '-i', path_myrecording,
+    #         'samples/converted_to_wav_file.wav'])
+    #
+    #sound_number = sound_to_number("samples/converted_to_wav_file.wav")
     
-    sound_number = sound_to_number("samples/converted_to_wav_file.wav")
+    #sound_array = get_array("samples/converted_to_wav_file.wav")
     
-    sound_array = get_array("samples/converted_to_wav_file.wav")
+    api_file_upload_url = 'http://upload.clyp.it/upload'
+    send_files = {'audioFile': ('music.mp3', path_myrecording, 'audio/mpeg')}
+    r = requests.post(api_file_upload_url, files=send_files)
+    
     
     
     
