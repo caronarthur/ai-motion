@@ -25,6 +25,10 @@ clean:
 	@rm -fr speech_emotion_reco-*.dist-info
 	@rm -fr speech_emotion_reco.egg-info
 
+streamlit:
+	-@streamlit run app.py
+
+
 install:
 	@pip install . -U
 

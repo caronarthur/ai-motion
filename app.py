@@ -5,6 +5,12 @@ import os
 from pydub import AudioSegment
 from helper import draw_embed, create_spectrogram, read_audio, record, save_record
 from pydub import AudioSegment
+import subprocess
+from speech_emotion_reco.mateo_preprocess import sound_to_number
+from speech_emotion_reco.raph_data import get_array
+
+#theme
+base="light"
 
 dir = 'samples/'
 for f in os.listdir(dir):
@@ -33,11 +39,18 @@ if st.button(f"Click to Record"):
 
     fig = create_spectrogram(path_myrecording)
     st.pyplot(fig)
-        
-    import subprocess
   
     # convert mp3 to wav file
     subprocess.call(['ffmpeg', '-i', path_myrecording,
-             'converted_to_wav_file.wav'])
-        
+             'samples/converted_to_wav_file.wav'])
+    
+    sound_number = sound_to_number("samples/converted_to_wav_file.wav")
+    
+    sound_array = get_array("samples/converted_to_wav_file.wav")
+    
+    
+    
+    
+    
+    
     
