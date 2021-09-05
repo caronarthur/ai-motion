@@ -18,11 +18,13 @@ def combine_predict(X_1, X_2):
     combined_proba= (proba1+proba2)/2
     combined_proba.sort_values(by=0,ascending=False, axis=1, inplace=True)
     proba_first_three= combined_proba.iloc[:,0:3]
+    proba_dict={"emotion1":[proba_first_three.columns[0],proba_first_three.iloc[0,0]],"emotion2":[proba_first_three.columns[1],proba_first_three.iloc[0,1]],"emotion3":[proba_first_three.columns[2],proba_first_three.iloc[0,2]]}
+
     #combined_proba = list(combined_proba).sort(reverse=True)
     #return combined_proba[0:3]
     #emotion_predict=combined_proba[['angry','disgust','fear',"happy",'neutral','sad']].idxmax(axis=1)
     #return {"prediction":emotion_predict}
-    return proba_first_three.to_dict(orient="list")
+    return proba_dict
   
 
 
