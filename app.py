@@ -29,14 +29,12 @@ for f in os.listdir(dir):
 
 #st.image('Ai-Motion.png', width=300)
 
-st.text("")
-
 filename = "recording"
 
 if st.button(f"Click to record your voice"):
     
     record_state = st.text("Recording...")
-    duration = 1  # seconds
+    duration = 8  # seconds
     fs = 48000
     myrecording = record(duration, fs)
     #record_state.text(f"Saving sample as {filename}.mp3")
@@ -49,14 +47,14 @@ if st.button(f"Click to record your voice"):
     st.audio(read_audio(path_myrecording))
     st.text("")
     
-    api_file_upload_url = 'http://127.0.0.1:8000/'
-    send_files = {'audioFile': ('music.mp3', path_myrecording, 'audio/mpeg')}
-    response = requests.post(api_file_upload_url, files=send_files)
-    emotion1, proba1 = response['emotion1'][0], round(response['emotion1'][1],2)*100
-    emotion2, proba2 = response['emotion2'][0], round(response['emotion2'][1],2)*100
-    emotion3, proba3 = response['emotion3'][0], round(response['emotion3'][1],2)*100
+    api_file_upload_url = 'http://127.0.0.1:8000/upload'
+    response = requests.post(api_file_upload_url, data=path_myrecording).json()
+    #emotion1, proba1 = response['emotion1'][0], round(response['emotion1'][1],2)*100
+    #emotion2, proba2 = response['emotion2'][0], round(response['emotion2'][1],2)*100
+    #emotion3, proba3 = response['emotion3'][0], round(response['emotion3'][1],2)*100
+    st.write(response)
     
-    c1, c2, c3 = st.columns(3)
+    """c1, c2, c3 = st.columns(3)
     with c1:
         st.image(f'speech_emotion_reco/data/emoji/{emotion1}.png')
         st.subheader(f'{emotion1} ({proba1}%)')
@@ -68,12 +66,12 @@ if st.button(f"Click to record your voice"):
     with c3:
         st.image(f'speech_emotion_reco/data/emoji/{emotion3}.png')
         st.subheader(f'...or {emotion3} ({proba3}%)')
-            
+
     record_state.text(f"Done!")
 
 st.text("")
 st.text("")
-st.text("") 
+st.text("") """
 
 #caption = '<p style="font-family:IBM plex sans; color:Grey; font-size: 10px; {text-align: center;}">This speech emotion recognition app was built by [mlorantdourte](https://github.com/mlorantdourte), [caronarthur](https://github.com/caronarthur) and [rvo1994](https://github.com/rvo1994)</p>'
 #caption = <a href="https://www.w3schools.com/">Visit W3Schools.com!</a>
