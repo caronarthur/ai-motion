@@ -26,10 +26,10 @@ def convert_mp3(path_myrecording):
 app = FastAPI()
 
 @app.post("/upload/")
-async def create_upload_file(file: UploadFile = File(...)):
-    buf= io.BytesIO()
-    with open ("sound.mp3","wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
+async def create_upload_file(my_file: UploadFile = File(...)):
+    buf = io.BytesIO()
+    with open("sound.mp3","wb") as buffer:
+        shutil.copyfileobj(my_file.file, buffer)
     
     a,b = convert_mp3("sound.mp3")
     

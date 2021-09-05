@@ -47,14 +47,16 @@ if st.button(f"Click to record your voice"):
     st.audio(read_audio(path_myrecording))
     st.text("")
     
-    api_file_upload_url = 'http://127.0.0.1:8000/upload'
-    response = requests.post(api_file_upload_url, data=path_myrecording).json()
-    #emotion1, proba1 = response['emotion1'][0], round(response['emotion1'][1],2)*100
-    #emotion2, proba2 = response['emotion2'][0], round(response['emotion2'][1],2)*100
-    #emotion3, proba3 = response['emotion3'][0], round(response['emotion3'][1],2)*100
-    st.write(response)
     
-    """c1, c2, c3 = st.columns(3)
+    url = "http://127.0.0.1:8000/upload"
+    files = {'my_file': open(path_myrecording, 'rb')}
+    response = requests.post(url, files=files).json()
+    emotion1, proba1 = response['emotion1'][0], round(response['emotion1'][1],2)*100
+    emotion2, proba2 = response['emotion2'][0], round(response['emotion2'][1],2)*100
+    emotion3, proba3 = response['emotion3'][0], round(response['emotion3'][1],2)*100
+
+    c1, c2, c3 = st.columns(3)
+    
     with c1:
         st.image(f'speech_emotion_reco/data/emoji/{emotion1}.png')
         st.subheader(f'{emotion1} ({proba1}%)')
@@ -71,7 +73,7 @@ if st.button(f"Click to record your voice"):
 
 st.text("")
 st.text("")
-st.text("") """
+st.text("")
 
 #caption = '<p style="font-family:IBM plex sans; color:Grey; font-size: 10px; {text-align: center;}">This speech emotion recognition app was built by [mlorantdourte](https://github.com/mlorantdourte), [caronarthur](https://github.com/caronarthur) and [rvo1994](https://github.com/rvo1994)</p>'
 #caption = <a href="https://www.w3schools.com/">Visit W3Schools.com!</a>
