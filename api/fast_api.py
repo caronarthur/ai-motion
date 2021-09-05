@@ -6,9 +6,9 @@ from speech_emotion_reco.mateo_preprocess import sound_to_number
 from speech_emotion_reco.raph_data import get_array
 from fastapi import FastAPI, File, UploadFile
 from speech_emotion_reco.combine_models import combine_predict
-import librosa 
 import shutil 
 import io
+import os
 
 def convert_mp3(path_myrecording):
     # convert mp3 to wav file
@@ -18,6 +18,8 @@ def convert_mp3(path_myrecording):
     X_1 = sound_to_number("samples/converted_to_wav_file.wav")
     
     X_2 = get_array("samples/converted_to_wav_file.wav")
+    
+    os.remove("samples/converted_to_wav_file.wav")
     
     return X_1, X_2
 

@@ -1,10 +1,6 @@
 import streamlit as st
-import librosa
-import glob
 import os
-from pydub import AudioSegment
-from helper import draw_embed, create_spectrogram, read_audio, record, save_record
-from pydub import AudioSegment
+from helper import create_spectrogram, read_audio, record, save_record
 import subprocess
 from speech_emotion_reco.mateo_preprocess import sound_to_number
 from speech_emotion_reco.raph_data import get_array
@@ -70,6 +66,8 @@ if st.button(f"Click to record your voice"):
         st.subheader(f'...or {emotion3} ({proba3}%)')
 
     record_state.text(f"Done!")
+    
+    os.remove(path_myrecording)
 
 st.text("")
 st.text("")
