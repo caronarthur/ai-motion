@@ -8,13 +8,13 @@ import requests
 
 # page conf
 st.set_page_config(
-    page_title="AI-motion",
+    page_title="AI-motions",
     page_icon='speech_emotion_reco/data/emoji/favicon.png',
-    layout="centered", # wide
+    layout="wide", # wide
     initial_sidebar_state="auto") # collapsed
 
 
-st.image('speech_emotion_reco/data/emoji/logo.png')
+st.sidebar.image('speech_emotion_reco/data/emoji/logo.png')
 
 title = '<b style="font-family:IBM plex sans; color:#EB7B67; font-size: 40px; {text-align: left;}">Let me detect how you feel:</b>'
 st.markdown(title, unsafe_allow_html=True)
@@ -47,9 +47,15 @@ if st.button(f"Click to record your voice"):
     url = "http://127.0.0.1:8000/upload"
     files = {'my_file': open(path_myrecording, 'rb')}
     response = requests.post(url, files=files).json()
-    emotion1, proba1 = response['emotion1'][0], round(response['emotion1'][1],2)*100
-    emotion2, proba2 = response['emotion2'][0], round(response['emotion2'][1],2)*100
-    emotion3, proba3 = response['emotion3'][0], round(response['emotion3'][1],2)*100
+    emotion1, proba1 = response['emotion1'][0], round(response['emotion1'][1]*100)
+    emotion2, proba2 = response['emotion2'][0], round(response['emotion2'][1]*100)
+    emotion3, proba3 = response['emotion3'][0], round(response['emotion3'][1]*100)
+    
+    st.text("")
+    st.text("")
+    st.text("")
+    title = '<b style="font-family:IBM plex sans; color:#EB7B67; font-size: 40px; {text-align: left;}">You are most-likely feeling:</b>'
+    st.markdown(title, unsafe_allow_html=True)
 
     c1, c2, c3 = st.columns(3)
     
@@ -66,8 +72,6 @@ if st.button(f"Click to record your voice"):
         st.subheader(f'...or {emotion3} ({proba3}%)')
 
     record_state.text(f"Done!")
-    
-    os.remove(path_myrecording)
 
 st.text("")
 st.text("")
@@ -78,7 +82,7 @@ st.text("")
 
 #st.markdown(caption, unsafe_allow_html=True)
 
-st.caption('This speech emotion recognition app was built by [mlorantdourte](https://github.com/mlorantdourte), [caronarthur](https://github.com/caronarthur) and [rvo1994](https://github.com/rvo1994)')
+st.sidebar.caption('This speech emotion recognition app was built by [mlorantdourte](https://github.com/mlorantdourte), [caronarthur](https://github.com/caronarthur) and [rvo1994](https://github.com/rvo1994).')
 
     #st.caption('Check out the full project on [Github](https://github.com/caronarthur/speech_emotion_reco)')
 
