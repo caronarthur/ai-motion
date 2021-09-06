@@ -39,4 +39,4 @@ async def create_upload_file(my_file: UploadFile = File(...)):
     return prediction
    
 
-    
+
