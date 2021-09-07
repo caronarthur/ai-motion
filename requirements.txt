@@ -38,7 +38,6 @@ pydub
 librosa
 sounddevice
 wavio
-subprocess
 ffmpeg
 glob
 

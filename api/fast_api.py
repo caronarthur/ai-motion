@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from joblib import load
 from pydantic import  BaseModel
-import subprocess
+#import subprocess
 from speech_emotion_reco.mateo_preprocess import sound_to_number
 from speech_emotion_reco.raph_data import get_array
 from fastapi import FastAPI, File, UploadFile
@@ -9,11 +9,14 @@ from speech_emotion_reco.combine_models import combine_predict
 import shutil 
 import io
 import os
+from pydub import AudioSegment
 
 def convert_mp3(path_myrecording):
     # convert mp3 to wav file
-    subprocess.call(['ffmpeg', '-i', path_myrecording,
-             'samples/converted_to_wav_file.wav'])
+    '''subprocess.call(['ffmpeg', '-i', path_myrecording,
+             'samples/converted_to_wav_file.wav'])'''
+    sound= AudioSegment.from_file(path_myrecording)
+    sound.export('samples/converted_to_wav_file.wav', format="wav")
     
     X_1 = sound_to_number("samples/converted_to_wav_file.wav")
     
