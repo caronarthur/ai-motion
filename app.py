@@ -5,19 +5,35 @@ import subprocess
 from speech_emotion_reco.mateo_preprocess import sound_to_number
 from speech_emotion_reco.raph_data import get_array
 import requests
+import base64
 
 # page conf
 st.set_page_config(
     page_title="AI-motions",
     page_icon='speech_emotion_reco/data/emoji/favicon.png',
-    layout="wide", # wide
     initial_sidebar_state="auto") # collapsed
 
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+                    
+local_css("style.css")
 
-st.sidebar.image('speech_emotion_reco/data/emoji/logo.png')
+st.markdown(
+    f"""
+    <div class="container">
+        <img class="logo-img" src="data:image/png;base64,{base64.b64encode(open("speech_emotion_reco/data/emoji/logo.png", "rb").read()).decode()}">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
-title = '<b style="font-family:IBM plex sans; color:#EB7B67; font-size: 40px; {text-align: left;}">Let me detect how you feel:</b>'
+st.text("")
+
+title = '<b style="font-family:IBM plex sans; color:#EB7B67; font-size: 40px; {text-align: center;}">Let me detect how you feel:</b>'
 st.markdown(title, unsafe_allow_html=True)
+
+st.text("")
 
 dir = 'samples/'
 for f in os.listdir(dir):
@@ -52,37 +68,52 @@ if st.button(f"Click to record your voice"):
     emotion3, proba3 = response['emotion3'][0], round(response['emotion3'][1]*100)
     
     st.text("")
-    st.text("")
-    st.text("")
-    title = '<b style="font-family:IBM plex sans; color:#EB7B67; font-size: 40px; {text-align: left;}">You are most-likely feeling:</b>'
+    title = '<b style="font-family:IBM plex sans; color:#EB7B67; font-size: 40px; {text-align: center;}">You are most-likely feeling:</b>'
     st.markdown(title, unsafe_allow_html=True)
 
     c1, c2, c3 = st.columns(3)
     
     with c1:
-        st.image(f'speech_emotion_reco/data/emoji/{emotion1}.png')
+        #st.image(f'speech_emotion_reco/data/emoji/{emotion1}.png')
+        st.markdown(
+        f"""
+        <div class="container">
+        <img class="logo-img" src="data:image/png;base64,{base64.b64encode(open(f"speech_emotion_reco/data/emoji/{emotion1}.png", "rb").read()).decode()}">
+        </div>
+        """,
+        unsafe_allow_html=True)
         st.subheader(f'{emotion1} ({proba1}%)')
 
     with c2:
-        st.image(f'speech_emotion_reco/data/emoji/{emotion2}.png')
+        #st.image(f'speech_emotion_reco/data/emoji/{emotion2}.png')
+        st.markdown(
+        f"""
+        <div class="container">
+        <img class="logo-img" src="data:image/png;base64,{base64.b64encode(open(f"speech_emotion_reco/data/emoji/{emotion2}.png", "rb").read()).decode()}">
+        </div>
+        """, 
+        unsafe_allow_html=True)
         st.subheader(f'...or {emotion2} ({proba2}%)')
         
     with c3:
-        st.image(f'speech_emotion_reco/data/emoji/{emotion3}.png')
+        #st.image(f'speech_emotion_reco/data/emoji/{emotion3}.png')
+        st.markdown(
+        f"""
+        <div class="container">
+        <img class="logo-img" src="data:image/png;base64,{base64.b64encode(open(f"speech_emotion_reco/data/emoji/{emotion3}.png", "rb").read()).decode()}">
+        </div>
+        """,
+        unsafe_allow_html=True)
         st.subheader(f'...or {emotion3} ({proba3}%)')
 
     record_state.text(f"Done!")
 
 st.text("")
 st.text("")
-st.text("")
 
-#caption = '<p style="font-family:IBM plex sans; color:Grey; font-size: 10px; {text-align: center;}">This speech emotion recognition app was built by [mlorantdourte](https://github.com/mlorantdourte), [caronarthur](https://github.com/caronarthur) and [rvo1994](https://github.com/rvo1994)</p>'
-#caption = <a href="https://www.w3schools.com/">Visit W3Schools.com!</a>
+caption = '<smaller style="font-family:IBM plex sans; color:#666778; font-size: 15px; {text-align: center;}">This speech emotion recognition app was built by [mlorantdourte](https://github.com/mlorantdourte), [caronarthur](https://github.com/caronarthur) and [rvo1994](https://github.com/rvo1994).</smaller>'
+st.markdown(caption, unsafe_allow_html=True)
 
-#st.markdown(caption, unsafe_allow_html=True)
-
-st.sidebar.caption('This speech emotion recognition app was built by [mlorantdourte](https://github.com/mlorantdourte), [caronarthur](https://github.com/caronarthur) and [rvo1994](https://github.com/rvo1994).')
 
     #st.caption('Check out the full project on [Github](https://github.com/caronarthur/speech_emotion_reco)')
 
