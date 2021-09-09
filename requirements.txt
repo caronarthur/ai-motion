@@ -9,7 +9,7 @@ numpy
 pandas
 scikit-learn
 seaborn
-
+tensorflow
 
 # tests/linter
 black
@@ -19,26 +19,26 @@ pytest
 yapf
 
 # API
+fastapi
 gcsfs
 google-cloud-storage
 mlflow
 s3fs
+uvicorn
 
 # utilities
 six>=1.14
 joblib
 memoized-property
 termcolor
-
+matplotlib
 #New packages for utils.py and data.py
 librosa==0.8.1
 
 #packages
 pydub
-librosa
 sounddevice
 wavio
 ffmpeg
-glob
-
 python-multipart
+SoundFile
