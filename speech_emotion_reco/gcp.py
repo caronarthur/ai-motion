@@ -1,16 +1,18 @@
-import os
 from google.cloud import storage
-from termcolor import colored
-from speech_emotion_reco.params import BUCKET_NAME, MODEL_NAME, MODEL_VERSION
 
-def storage_upload(rm=False):
-    client = storage.Client().bucket(BUCKET_NAME)
+def download_blob():
+    """Downloads a blob."""
+    client = storage.Client().bucket('ai-motion-bucket')
+    
+    storage_location_1 = 'mlp_model.joblib'
+    blob = client.blob(storage_location_1)
+    blob.download_to_filename('../models/model.joblib')
+    
+    storage_location_2 = 'CNN_model.hdf5'
+    blob = client.blob(storage_location_2)
+    blob.download_to_filename('../models/CNN_model.hdf5')
 
-    local_model_name = 'model.joblib'
-    storage_location = f"models/{MODEL_NAME}/{MODEL_VERSION}/{local_model_name}"
-    blob = client.blob(storage_location)
-    blob.upload_from_filename('model.joblib')
-    print(colored(f"=> model.joblib uploaded to bucket {BUCKET_NAME} inside {storage_location}",
-                  "green"))
-    if rm:
-        os.remove('model.joblib')
+download_blob()
+    
+
+    
