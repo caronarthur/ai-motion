@@ -50,13 +50,17 @@ if st.button(f"Record your voice"):
     #record_state.text(f"Saving sample as {filename}.mp3")
 
     path_myrecording = f"./samples/{filename}.mp3"
+    path_converted=f"./samples/{filename}.wav"
 
     save_record(path_myrecording, myrecording, fs)
     record_state.text(f"Voice recorded! Please wait a moment, AI-motion is analyzing your voice...")
     st.audio(read_audio(path_myrecording))
-      
+    
+    subprocess.call(['ffmpeg', '-i', path_myrecording,path_converted])  
     url = "http://127.0.0.1:8000/upload"
-    files = {'my_file': open(path_myrecording, 'rb')}
+    files = {'my_file': open(path_converted, 'rb')}
+
+
     response = requests.post(url, files=files).json()
     emotion1, proba1 = response['emotion1'][0], round(response['emotion1'][1]*100)
     emotion2, proba2 = response['emotion2'][0], round(response['emotion2'][1]*100)
@@ -122,6 +126,17 @@ st.markdown(caption, unsafe_allow_html=True)
     #sound_number = sound_to_number("samples/converted_to_wav_file.wav")
     
     #sound_array = get_array("samples/converted_to_wav_file.wav")
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+
     
 
     

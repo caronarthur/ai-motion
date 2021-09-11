@@ -9,18 +9,17 @@ import shutil
 import io
 import os
 #from pydub import AudioSegment
-import subprocess
 
 def convert_mp3(path_myrecording):
     # convert mp3 to wav file
-    subprocess.call(['ffmpeg', '-i', path_myrecording,
-             'samples/converted_to_wav_file.wav'])
+    '''subprocess.call(['ffmpeg', '-i', path_myrecording,
+             'samples/converted_to_wav_file.wav'])'''
     #sound= AudioSegment.from_file(path_myrecording)
     #sound.export('samples/converted_to_wav_file.wav', format="wav")
     
-    X_1 = sound_to_number("samples/converted_to_wav_file.wav")
+    X_1 = sound_to_number(path_myrecording)
     
-    X_2 = get_array("samples/converted_to_wav_file.wav")
+    X_2 = get_array(path_myrecording)
     
     os.remove("samples/converted_to_wav_file.wav")
     
@@ -33,13 +32,12 @@ app = FastAPI()
 @app.post("/upload/")
 async def create_upload_file(my_file: UploadFile = File(...)):
     buf = io.BytesIO()
-    with open("sound.mp3","wb") as buffer:
+    with open("sound.wav","wb") as buffer:
         shutil.copyfileobj(my_file.file, buffer)
     
-    a,b = convert_mp3("sound.mp3")
+    a,b = convert_mp3("sound.wav")
     
     prediction = combine_predict(a,b)
     return prediction
-   
 
 
