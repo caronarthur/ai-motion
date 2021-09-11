@@ -9,7 +9,7 @@ import base64
 
 # page conf
 st.set_page_config(
-    page_title="AI-motions",
+    page_title="AI-motion",
     page_icon='speech_emotion_reco/data/emoji/favicon.png',
     initial_sidebar_state="auto") # collapsed
 
@@ -30,10 +30,8 @@ st.markdown(
 
 st.text("")
 
-title = '<b style="font-family:IBM plex sans; color:#EB7B67; font-size: 40px; {text-align: center;}">Let me detect how you feel:</b>'
+title = '<b style="font-family:IBM plex sans; font-size: 25px; {text-align: center;}">Let\'s see how you feel:</b>'
 st.markdown(title, unsafe_allow_html=True)
-
-st.text("")
 
 dir = 'samples/'
 for f in os.listdir(dir):
@@ -43,7 +41,7 @@ for f in os.listdir(dir):
 
 filename = "recording"
 
-if st.button(f"Click to record your voice"):
+if st.button(f"Record your voice"):
     
     record_state = st.text("Recording...")
     duration = 8  # seconds
@@ -54,12 +52,9 @@ if st.button(f"Click to record your voice"):
     path_myrecording = f"./samples/{filename}.mp3"
 
     save_record(path_myrecording, myrecording, fs)
-    record_state.text(f"Voice recorded! Please wait a moment, AI-motions is analyzing your voice...")
-    st.text("")
+    record_state.text(f"Voice recorded! Please wait a moment, AI-motion is analyzing your voice...")
     st.audio(read_audio(path_myrecording))
-    st.text("")
-    
-    
+      
     url = "http://127.0.0.1:8000/upload"
     files = {'my_file': open(path_myrecording, 'rb')}
     response = requests.post(url, files=files).json()
@@ -67,8 +62,7 @@ if st.button(f"Click to record your voice"):
     emotion2, proba2 = response['emotion2'][0], round(response['emotion2'][1]*100)
     emotion3, proba3 = response['emotion3'][0], round(response['emotion3'][1]*100)
     
-    st.text("")
-    title = '<b style="font-family:IBM plex sans; color:#EB7B67; font-size: 40px; {text-align: center;}">You are most-likely feeling:</b>'
+    title = '<b style="font-family:IBM plex sans; font-size: 25px; {text-align: center;}">You are most-likely feeling:</b>'
     st.markdown(title, unsafe_allow_html=True)
 
     c1, c2, c3 = st.columns(3)
@@ -111,7 +105,7 @@ if st.button(f"Click to record your voice"):
 st.text("")
 st.text("")
 
-caption = '<smaller style="font-family:IBM plex sans; color:#666778; font-size: 15px; {text-align: center;}">This speech emotion recognition app was built by [mlorantdourte](https://github.com/mlorantdourte), [caronarthur](https://github.com/caronarthur) and [rvo1994](https://github.com/rvo1994).</smaller>'
+caption = '<smaller style="font-family:IBM plex sans; color:#8F8E9A; font-size: 15px; {text-align: center;}">This speech emotion recognition app was built by [mlorantdourte](https://github.com/mlorantdourte), [caronarthur](https://github.com/caronarthur) and [rvo1994](https://github.com/rvo1994).</smaller>'
 st.markdown(caption, unsafe_allow_html=True)
 
 
