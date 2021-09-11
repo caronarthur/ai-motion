@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from joblib import load
-from pydantic import  BaseModel
 #import subprocess
 from speech_emotion_reco.mateo_preprocess import sound_to_number
 from speech_emotion_reco.raph_data import get_array

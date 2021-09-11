@@ -1,7 +1,7 @@
 # packaging
 pip>=9
 setuptools>=26
-twine
+twine==3.4.2
 wheel>=0.29
 
 # data science
@@ -9,7 +9,7 @@ numpy
 pandas
 scikit-learn
 seaborn
-tensorflow
+tensorflow==2.4.1
 
 # tests/linter
 black
@@ -42,3 +42,5 @@ wavio
 ffmpeg
 python-multipart
 SoundFile
+sndfile==0.2.
+ffprobe==0.5

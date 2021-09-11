@@ -16,7 +16,9 @@ COPY speech_emotion_reco/raph_data.py /speech_emotion_reco/raph_data.py
 COPY requirements.txt /requirements.txt
 #COPY model.joblib /model.joblib
 #COPY /home/mateo/code/mlorantdourte/gcp/le-wagon-data-mateo.json /credentials.json
-
+#RUN apt-get install libsndfile1-dev
+RUN apt install -y ffmpeg
+RUN apt-get update && apt-get upgrade -y && apt-get install -y && apt-get -y install apt-utils gcc libpq-dev libsndfile-dev
 RUN pip install -r requirements.txt
 
 CMD uvicorn api.fast_api:app --host 0.0.0.0 --port $PORT
