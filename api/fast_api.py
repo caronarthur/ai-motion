@@ -8,14 +8,15 @@ from speech_emotion_reco.combine_models import combine_predict
 import shutil 
 import io
 import os
-from pydub import AudioSegment
+#from pydub import AudioSegment
+import subprocess
 
 def convert_mp3(path_myrecording):
     # convert mp3 to wav file
-    '''subprocess.call(['ffmpeg', '-i', path_myrecording,
-             'samples/converted_to_wav_file.wav'])'''
-    sound= AudioSegment.from_file(path_myrecording)
-    sound.export('samples/converted_to_wav_file.wav', format="wav")
+    subprocess.call(['ffmpeg', '-i', path_myrecording,
+             'samples/converted_to_wav_file.wav'])
+    #sound= AudioSegment.from_file(path_myrecording)
+    #sound.export('samples/converted_to_wav_file.wav', format="wav")
     
     X_1 = sound_to_number("samples/converted_to_wav_file.wav")
     
