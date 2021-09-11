@@ -21,7 +21,7 @@ def convert_mp3(path_myrecording):
     
     X_2 = get_array(path_myrecording)
     
-    os.remove("samples/converted_to_wav_file.wav")
+    #os.remove("samples/converted_to_wav_file.wav")
     
     return X_1, X_2
 

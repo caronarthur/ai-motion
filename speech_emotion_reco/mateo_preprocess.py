@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import librosa
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 
 def sound_to_number(sound):
