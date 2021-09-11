@@ -3,10 +3,12 @@ import joblib
 from speech_emotion_reco.raph_data import get_array
 from speech_emotion_reco.mateo_preprocess import sound_to_number
 import pandas as pd
+from speech_emotion_reco.gcp import download_blob
 
 def combine_predict(X_1, X_2):
     X_1 = pd.DataFrame(X_1)
 
+    download_blob()
     model_1= joblib.load("models/mlp_model.joblib")
     model_2= load_model("models/CNN_model.hdf5")
     proba1= pd.DataFrame(model_1.predict_proba(X_1.T))
