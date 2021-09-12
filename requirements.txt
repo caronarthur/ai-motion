@@ -5,6 +5,7 @@ twine==3.4.2
 wheel>=0.29
 
 # data science
+python == 3.8.6
 numpy
 pandas
 scikit-learn
