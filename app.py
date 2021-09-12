@@ -50,18 +50,22 @@ if st.button(f"Record your voice"):
     #record_state.text(f"Saving sample as {filename}.mp3")
 
     path_myrecording = f"./samples/{filename}.mp3"
-    path_converted = f"./samples/{filename}.wav"
+    #path_converted = f"./samples/{filename}.wav"
 
     save_record(path_myrecording, myrecording, fs)
     record_state.text(f"Voice recorded! Please wait a moment, AI-motion is analyzing your voice...")
     st.audio(read_audio(path_myrecording))
     
-    subprocess.call(['ffmpeg', '-i', path_myrecording,path_converted])  
-    url = "https://ai-motion-api-g6zof5oyea-ew.a.run.app/upload"
-    files = {'my_file': open(path_converted, 'rb')}
+    url = "https://ai-motion-api-g6zof5oyea-ew.a.run.app/upload/"
+    files = {'my_file': open(path_myrecording, 'rb')}
+    #r= requests.post(url, files=files)
+    
+    #subprocess.call(['ffmpeg', '-i', path_myrecording,path_converted])  
+    #url = "https://ai-motion-api-g6zof5oyea-ew.a.run.app/upload"
+    #files = {'my_file': open(path_converted, 'rb')}
 
-    st.text(requests.post(url, files=files))
-    #response = requests.post(url, files=files).json()
+    #st.text(requests.post(url, files=files))
+    response = requests.post(url, files=files).json()
     emotion1, proba1 = response['emotion1'][0], round(response['emotion1'][1]*100)
     emotion2, proba2 = response['emotion2'][0], round(response['emotion2'][1]*100)
     emotion3, proba3 = response['emotion3'][0], round(response['emotion3'][1]*100)
