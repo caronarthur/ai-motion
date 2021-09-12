@@ -9,7 +9,7 @@ numpy
 pandas
 scikit-learn
 seaborn
-tensorflow==2.4.1
+tensorflow
 
 # tests/linter
 black
