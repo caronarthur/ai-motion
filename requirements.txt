@@ -46,6 +46,5 @@ python-multipart
 SoundFile
 
 #sndfile
-ffprobe
-libsndfile1
+ffprobe==0.5
 libsndfile1-dev
