@@ -47,4 +47,3 @@ SoundFile
 
 #sndfile
 ffprobe==0.5
-libsndfile1-dev
