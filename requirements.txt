@@ -35,7 +35,7 @@ termcolor
 matplotlib
 #New packages for utils.py and data.py
 librosa==0.8.1
-sndfile
+#sndfile
 
 #packages
 pydub
@@ -44,5 +44,8 @@ wavio
 ffmpeg
 python-multipart
 SoundFile
+
 #sndfile
 ffprobe==0.5
+libsndfile1
+libsndfile1-dev
