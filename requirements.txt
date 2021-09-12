@@ -42,5 +42,5 @@ wavio
 ffmpeg
 python-multipart
 SoundFile
-sndfile==0.2.
+sndfile
 ffprobe==0.5
