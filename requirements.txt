@@ -36,7 +36,8 @@ matplotlib
 #New packages for utils.py and data.py
 librosa==0.8.1
 #torch
-sndfile
+
+#sndfile
 
 #packages
 #pydub
