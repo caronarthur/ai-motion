@@ -45,7 +45,7 @@ sounddevice
 wavio
 #ffmpeg
 #python-multipart
-soundFile
+SoundFile
 
 #sndfile
 ffprobe==0.5
