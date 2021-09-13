@@ -8,8 +8,8 @@ wheel>=0.29
 streamlit
 numpy == 1.20
 pandas
-scikit-learn
-seaborn
+#scikit-learn
+#seaborn
 #tensorflow
 
 # tests/linter
@@ -20,31 +20,32 @@ pytest
 yapf
 
 # API
-fastapi
-gcsfs
-google-cloud-storage
-mlflow
-s3fs
-uvicorn
+#fastapi
+#gcsfs
+#google-cloud-storage
+#mlflow
+#s3fs
+#uvicorn
 
 # utilities
-six>=1.14
-joblib
+#six>=1.14
+#joblib
 memoized-property
-termcolor
+#termcolor
 matplotlib
 #New packages for utils.py and data.py
 librosa==0.8.1
-torch
+#torch
 #sndfile
 
 #packages
-pydub
+#pydub
 sounddevice
 wavio
-ffmpeg
-python-multipart
+#ffmpeg
+#python-multipart
 SoundFile
 
 #sndfile
 ffprobe==0.5
+pathlib
