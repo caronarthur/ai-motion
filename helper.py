@@ -1,32 +1,8 @@
 import matplotlib.pyplot as plt
 import librosa
 from pathlib import Path
-from encoder.inference import plot_embedding_as_heatmap
 import sounddevice as sd
 import wavio
-
-def draw_embed(embed, name, which):
-    """
-    Draws an embedding.
-
-    Parameters:
-        embed (np.array): array of embedding
-
-        name (str): title of plot
-
-
-    Return:
-        fig: matplotlib figure
-    """
-    fig, embed_ax = plt.subplots()
-    plot_embedding_as_heatmap(embed)
-    embed_ax.set_title(name)
-    embed_ax.set_aspect("equal", "datalim")
-    embed_ax.set_xticks([])
-    embed_ax.set_yticks([])
-    embed_ax.figure.canvas.draw()
-    return fig
-
 
 def create_spectrogram(voice_sample):
     """
