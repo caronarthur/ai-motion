@@ -1,1 +1,8 @@
+<<<<<<< HEAD
 libsndfile-dev
+=======
+libportaudio2
+libsndfile1-dev
+libasound-dev
+portaudio19-dev
+>>>>>>> 0c76e36db6f2962834be570a8d58dd867460c967
