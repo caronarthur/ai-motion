@@ -1,4 +1,4 @@
-libsndfile1-dev
 libportaudio2
+libsndfile1-dev
 libasound-dev
 portaudio19-dev
