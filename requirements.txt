@@ -40,9 +40,10 @@ librosa==0.8.1
 #sndfile
 
 #packages
-#pydub
+pydub
 sounddevice
 wavio
+pyaudio
 #ffmpeg
 #python-multipart
 SoundFile
