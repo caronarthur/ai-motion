@@ -1,0 +1,15 @@
+*.egg-info
+.coverage
+.ipynb_checkpoints
+.DS_Store
+raw_data/
+*.csv
+**/__pycache__/
+.env
+/data/
+speech_emotion_reco/data/
+/speech_emotion_reco/data/
+/models/
+/app/notebooks
+/app/logo.png
+

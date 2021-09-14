@@ -1,0 +1,4 @@
+libportaudio2
+libsndfile1-dev
+libasound-dev
+portaudio19-dev
