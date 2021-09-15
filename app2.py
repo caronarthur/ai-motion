@@ -21,7 +21,7 @@ local_css("style.css")
 st.markdown(
     f"""
     <div class="container">
-        <img class="logo-img" src="data:image/png;base64,{base64.b64encode(open("speech_emotion_reco/data/emoji/logo.png", "rb").read()).decode()}">
+        <img class="logo-img" src="data:image/png;base64,{base64.b64encode(open("speech_emotion_reco/images/logo.png", "rb").read()).decode()}">
     </div>
     """,
     unsafe_allow_html=True
@@ -59,7 +59,7 @@ if uploaded_file is not None:
         st.markdown(
         f"""
         <div class="container">
-        <img class="logo-img" src="data:image/png;base64,{base64.b64encode(open(f"speech_emotion_reco/data/emoji/{emotion1}.png", "rb").read()).decode()}">
+        <img class="logo-img" src="data:image/png;base64,{base64.b64encode(open(f"speech_emotion_reco/images/{emotion1}.png", "rb").read()).decode()}">
         </div>
         """,
         unsafe_allow_html=True)
@@ -70,7 +70,7 @@ if uploaded_file is not None:
         st.markdown(
         f"""
         <div class="container">
-        <img class="logo-img" src="data:image/png;base64,{base64.b64encode(open(f"speech_emotion_reco/data/emoji/{emotion2}.png", "rb").read()).decode()}">
+        <img class="logo-img" src="data:image/png;base64,{base64.b64encode(open(f"speech_emotion_reco/images/{emotion2}.png", "rb").read()).decode()}">
         </div>
         """, 
         unsafe_allow_html=True)
@@ -81,7 +81,7 @@ if uploaded_file is not None:
         st.markdown(
         f"""
         <div class="container">
-        <img class="logo-img" src="data:image/png;base64,{base64.b64encode(open(f"speech_emotion_reco/data/emoji/{emotion3}.png", "rb").read()).decode()}">
+        <img class="logo-img" src="data:image/png;base64,{base64.b64encode(open(f"speech_emotion_reco/images/{emotion3}.png", "rb").read()).decode()}">
         </div>
         """,
         unsafe_allow_html=True)
