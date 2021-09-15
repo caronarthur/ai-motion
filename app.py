@@ -25,7 +25,7 @@ st.markdown(
 
 st.text("")
 
-title = '<b style="font-family:IBM plex sans; color:#EB7B67; font-size: 25px; {text-align: center;}">Let\'s see how you feel:</b>'
+title = '<b style="font-family:IBM plex sans; color:#EB7B67; font-size: 25px; {text-align: center;}">I detect emotions in the voice:</b>'
 st.markdown(title, unsafe_allow_html=True)
 
 uploaded_file = st.file_uploader("Upload Files",type=['wav'])
@@ -38,7 +38,7 @@ if uploaded_file is not None:
     emotion1, proba1 = response['emotion1'][0], round(response['emotion1'][1]*100)
     emotion2, proba2 = response['emotion2'][0], round(response['emotion2'][1]*100)
     emotion3, proba3 = response['emotion3'][0], round(response['emotion3'][1]*100)
-    title = '<b style="font-family:IBM plex sans; color:#EB7B67; font-size: 25px; {text-align: center;}">You are most-likely feeling:</b>'
+    title = '<b style="font-family:IBM plex sans; color:#EB7B67; font-size: 25px; {text-align: center;}">This person is most-likely feeling:</b>'
     st.markdown(title, unsafe_allow_html=True)
     
     c1, c2, c3 = st.columns(3)  
