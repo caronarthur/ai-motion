@@ -5,6 +5,8 @@ import os
 #from speech_emotion_reco.raph_data import get_array
 import requests
 import base64
+import io
+import wave
 
 # page conf
 st.set_page_config(
@@ -32,18 +34,11 @@ st.text("")
 title = '<b style="font-family:IBM plex sans; font-size: 25px; {text-align: center;}">Let\'s see how you feel:</b>'
 st.markdown(title, unsafe_allow_html=True)
 
-"""dir = 'samples/'
-for f in os.listdir(dir):
-    os.remove(os.path.join(dir, f))  """
-    
-filename = "recording"
-path_myrecording = f"./samples/{filename}.mp3"
 uploaded_file = st.file_uploader("Upload Files",type=['mp3'])
 
 if uploaded_file is not None:
-    with open(path_myrecording,"wb") as f:
-        f.write(uploaded_file.getbuffer())
-    files = {'my_file': open(path_myrecording, 'rb')}
+    params_set = False
+    files = {'my_file': uploaded_file}
     url = "https://ai-motion-api-g6zof5oyea-ew.a.run.app/upload/"
     response = requests.post(url, files=files).json()
     emotion1, proba1 = response['emotion1'][0], round(response['emotion1'][1]*100)
