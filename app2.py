@@ -5,11 +5,6 @@ from helper import save_record
 #from speech_emotion_reco.raph_data import get_array
 import requests
 import base64
-import tempfile
-from pydub import AudioSegment
-import shutil 
-import io
-import wave
 
 # page conf
 st.set_page_config(
