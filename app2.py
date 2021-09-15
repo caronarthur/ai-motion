@@ -34,10 +34,11 @@ st.text("")
 title = '<b style="font-family:IBM plex sans; font-size: 25px; {text-align: center;}">Let\'s see how you feel:</b>'
 st.markdown(title, unsafe_allow_html=True)
 
+uploaded_file = None
+
 uploaded_file = st.file_uploader("Upload Files",type=['mp3'])
 
 if uploaded_file is not None:
-    params_set = False
     files = {'my_file': uploaded_file}
     url = "https://ai-motion-api-g6zof5oyea-ew.a.run.app/upload/"
     response = requests.post(url, files=files).json()
@@ -47,7 +48,7 @@ if uploaded_file is not None:
     title = '<b style="font-family:IBM plex sans; font-size: 25px; {text-align: center;}">You are most-likely feeling:</b>'
     st.markdown(title, unsafe_allow_html=True)
     
-    c1, c2, c3 = st.columns(3)
+    c1, c2, c3 = st.columns(3)  
     
     with c1:
         #st.image(f'speech_emotion_reco/data/emoji/{emotion1}.png')
