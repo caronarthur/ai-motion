@@ -1,4 +1,9 @@
 [theme]
 base="light"
 primaryColor="#eb7b67"
-secondaryBackgroundColor="#f0f2f6"
+textColor="#666778"
+
+[server]
+headless=true
+enableCORS=false
+port=80
