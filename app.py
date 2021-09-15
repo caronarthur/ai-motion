@@ -9,7 +9,7 @@ import base64
 # page conf
 st.set_page_config(
     page_title="AI-motion",
-    page_icon='speech_emotion_reco/data/emoji/favicon.png',
+    page_icon='speech_emotion_reco/images/favicon.png',
     initial_sidebar_state="auto") # collapsed
 
 def local_css(file_name):

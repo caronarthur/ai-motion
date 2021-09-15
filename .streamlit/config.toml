@@ -1,7 +1,7 @@
 [theme]
 base="light"
 primaryColor="#eb7b67"
-textColor="#666778"
+secondaryBackgroundColor="#f0f2f6"
 
 [server]
 headless=true

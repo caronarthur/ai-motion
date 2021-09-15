@@ -1,12 +1,6 @@
 import streamlit as st
-import os
-#from helper import save_record
-#from speech_emotion_reco.mateo_preprocess import sound_to_number
-#from speech_emotion_reco.raph_data import get_array
 import requests
 import base64
-import io
-import wave
 
 # page conf
 st.set_page_config(
@@ -31,7 +25,7 @@ st.markdown(
 
 st.text("")
 
-title = '<b style="font-family:IBM plex sans; font-size: 25px; {text-align: center;}">Let\'s see how you feel:</b>'
+title = '<b style="font-family:IBM plex sans; color:#EB7B67; font-size: 25px; {text-align: center;}">Let\'s see how you feel:</b>'
 st.markdown(title, unsafe_allow_html=True)
 
 uploaded_file = st.file_uploader("Upload Files",type=['wav'])
@@ -39,12 +33,12 @@ uploaded_file = st.file_uploader("Upload Files",type=['wav'])
 if uploaded_file is not None:
     files = {'my_file': uploaded_file}
     url = "https://ai-motion-api-g6zof5oyea-ew.a.run.app/upload/"
-    print(uploaded_file)
+    st.audio(uploaded_file)
     response = requests.post(url, files=files).json()
     emotion1, proba1 = response['emotion1'][0], round(response['emotion1'][1]*100)
     emotion2, proba2 = response['emotion2'][0], round(response['emotion2'][1]*100)
     emotion3, proba3 = response['emotion3'][0], round(response['emotion3'][1]*100)
-    title = '<b style="font-family:IBM plex sans; font-size: 25px; {text-align: center;}">You are most-likely feeling:</b>'
+    title = '<b style="font-family:IBM plex sans; color:#EB7B67; font-size: 25px; {text-align: center;}">You are most-likely feeling:</b>'
     st.markdown(title, unsafe_allow_html=True)
     
     c1, c2, c3 = st.columns(3)  
