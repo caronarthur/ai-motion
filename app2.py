@@ -34,13 +34,12 @@ st.text("")
 title = '<b style="font-family:IBM plex sans; font-size: 25px; {text-align: center;}">Let\'s see how you feel:</b>'
 st.markdown(title, unsafe_allow_html=True)
 
-uploaded_file = None
-
-uploaded_file = st.file_uploader("Upload Files",type=['mp3'])
+uploaded_file = st.file_uploader("Upload Files",type=['wav'])
 
 if uploaded_file is not None:
     files = {'my_file': uploaded_file}
     url = "https://ai-motion-api-g6zof5oyea-ew.a.run.app/upload/"
+    print(uploaded_file)
     response = requests.post(url, files=files).json()
     emotion1, proba1 = response['emotion1'][0], round(response['emotion1'][1]*100)
     emotion2, proba2 = response['emotion2'][0], round(response['emotion2'][1]*100)
