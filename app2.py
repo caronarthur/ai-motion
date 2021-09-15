@@ -32,10 +32,10 @@ st.text("")
 title = '<b style="font-family:IBM plex sans; font-size: 25px; {text-align: center;}">Let\'s see how you feel:</b>'
 st.markdown(title, unsafe_allow_html=True)
 
-dir = 'samples/'
+"""dir = 'samples/'
 for f in os.listdir(dir):
-    os.remove(os.path.join(dir, f))  
-
+    os.remove(os.path.join(dir, f))  """
+    
 filename = "recording"
 path_myrecording = f"./samples/{filename}.mp3"
 uploaded_file = st.file_uploader("Upload Files",type=['mp3'])
