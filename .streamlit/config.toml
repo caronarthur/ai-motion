@@ -2,8 +2,3 @@
 base="light"
 primaryColor="#eb7b67"
 secondaryBackgroundColor="#f0f2f6"
-
-[server]
-headless=true
-enableCORS=false
-port=80
