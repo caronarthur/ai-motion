@@ -1,31 +1,8 @@
 from fastapi import FastAPI
-from joblib import load
-#import subprocess
-from speech_emotion_reco.mateo_preprocess import sound_to_number
-from speech_emotion_reco.raph_data import get_array
 from fastapi import FastAPI, File, UploadFile
-from speech_emotion_reco.combine_models import combine_predict
+from speech_emotion_reco.utils import combine_predict, convert_wav
 import shutil 
 import io
-import os
-#from pydub import AudioSegment
-
-def convert_mp3(path_myrecording):
-    # convert mp3 to wav file
-    '''subprocess.call(['ffmpeg', '-i', path_myrecording,
-             'samples/converted_to_wav_file.wav'])'''
-    #sound= AudioSegment.from_file(path_myrecording)
-    #sound.export('samples/converted_to_wav_file.wav', format="wav")
-    
-    X_1 = sound_to_number(path_myrecording)
-    
-    X_2 = get_array(path_myrecording)
-    
-    #os.remove("samples/converted_to_wav_file.wav")
-    
-    return X_1, X_2
-
-# initiate API
 
 app = FastAPI()
 
@@ -35,7 +12,7 @@ async def create_upload_file(my_file: UploadFile = File(...)):
     with open("sound.wav","wb") as buffer:
         shutil.copyfileobj(my_file.file, buffer)
     
-    a,b = convert_mp3("sound.wav")
+    a,b = convert_wav("sound.wav")
     
     prediction = combine_predict(a,b)
     return prediction
