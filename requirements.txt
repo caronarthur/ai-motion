@@ -10,7 +10,7 @@ numpy == 1.20
 pandas
 #scikit-learn
 #seaborn
-#tensorflow
+tensorflow
 
 # tests/linter
 black
@@ -42,6 +42,10 @@ matplotlib
 pydub
 sounddevice
 wavio
+librosa
+PIL
+joblib
+shutil
 #ffmpeg
 #python-multipart
 
