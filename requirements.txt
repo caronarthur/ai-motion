@@ -29,12 +29,12 @@ yapf
 
 # utilities
 #six>=1.14
-#joblib
+#joblibG
 memoized-property
 #termcolor
 matplotlib
 #New packages for utils.py and data.py
-librosa==0.8.1
+librga==0.8.1
 #torch
 
 #sndfile
@@ -43,7 +43,6 @@ librosa==0.8.1
 pydub
 sounddevice
 wavio
-pyaudio
 #ffmpeg
 #python-multipart
 
