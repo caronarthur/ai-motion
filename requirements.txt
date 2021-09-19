@@ -43,7 +43,6 @@ pydub
 sounddevice
 wavio
 librosa
-PIL
 joblib
 shutil
 #ffmpeg
