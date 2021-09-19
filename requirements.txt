@@ -10,7 +10,7 @@ numpy == 1.20
 pandas
 #scikit-learn
 #seaborn
-tensorflow
+tensorflow==2.4.1
 
 # tests/linter
 black
@@ -33,7 +33,7 @@ memoized-property
 #termcolor
 matplotlib
 #New packages for utils.py and data.py
-#librga==0.8.1
+librosa==0.8.1
 #torch
 
 #sndfile
@@ -42,7 +42,6 @@ matplotlib
 pydub
 sounddevice
 wavio
-librosa
 joblib
 #ffmpeg
 #python-multipart
