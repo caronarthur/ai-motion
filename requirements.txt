@@ -11,6 +11,7 @@ pandas
 #scikit-learn
 #seaborn
 tensorflow==2.4.1
+keras
 
 # tests/linter
 black
@@ -50,5 +51,5 @@ joblib
 SoundFile
 
 #sndfile
-ffprobe==0.5
-pathlib
+#ffprobe==0.5
+#pathlib

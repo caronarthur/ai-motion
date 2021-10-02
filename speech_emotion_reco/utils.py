@@ -8,10 +8,10 @@ from google.cloud import storage
 from tensorflow.keras.models import load_model
 import joblib
 import pandas as pd
+import os
 
 def get_array(audio_file):
     data, sample_rate = librosa.load(audio_file, sr=44100)
-    fig = plt.figure
     sgram = librosa.stft(data)
     sgram_mag, _ = librosa.magphase(sgram)
     sample_rate = 44100
@@ -69,7 +69,8 @@ def download_blob():
 def combine_predict(X_1, X_2):
     X_1 = pd.DataFrame(X_1)
 
-    download_blob()
+    if (not os.path.exists("models/mlp_model.joblib")) or (not os.path.exists("models/CNN_model.hdf5")):
+        download_blob()
     model_1 = joblib.load("models/mlp_model.joblib")
     model_2 = load_model("models/CNN_model.hdf5")
     proba1 = pd.DataFrame(model_1.predict_proba(X_1.T))
