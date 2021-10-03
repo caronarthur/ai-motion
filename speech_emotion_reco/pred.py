@@ -4,15 +4,13 @@ from pydub import AudioSegment
 from pydub.utils import make_chunks
 
 def get_emotions_over_time(file_path):
-    """"takes the path of a wav file as input, slides the wav file into chunks of 10 seconds and return a dictionary
+    """"takes the path of a wav file as input, slides the wav file into chunks of 8 seconds and return a dictionary
     containing a prediction of the emotion (top 3 with probability) for every chunk"""
     myaudio = AudioSegment.from_file(file_path, "wav") 
-    chunk_length_ms = 10000 # pydub calculates in millisec
+    chunk_length_ms = 8000 # pydub calculates in millisec
     chunks = make_chunks(myaudio, chunk_length_ms) # make chunks of ten seconds
     emotions = {}
     # export all of the individual chunks as wav files
-    if not os.path.exists('chunks'):
-        os.mkdir('chunks')
     for i, chunk in enumerate(chunks):
         chunk_name = "chunks/chunk{0}.wav".format(i)
         print(f"exporting {chunk_name}")
@@ -22,6 +20,7 @@ def get_emotions_over_time(file_path):
             a,b = convert_wav(f'chunks/{path}')
             pred = combine_predict(a,b)
             emotions[index] = pred
+            os.remove(f'chunks/{path}')
     return emotions
 
 if __name__ == "__main__":
